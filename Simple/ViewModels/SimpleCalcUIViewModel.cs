@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 using Prism.Commands;
 using Prism.Mvvm;
 
-namespace SimpleCalculator
+namespace SimpleCalc.ViewModels
 {
-    class MainViewModel : BindableBase
+    class SimpleCalcUIViewModel : BindableBase
     {
-        public MainViewModel()
+        public SimpleCalcUIViewModel()
         {
             AddCommand = new DelegateCommand(Add);
             SubtractCommand = new DelegateCommand(Subtract);
