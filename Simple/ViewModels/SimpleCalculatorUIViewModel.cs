@@ -5,12 +5,13 @@ using System.Text;
 using System.Threading.Tasks;
 using Prism.Commands;
 using Prism.Mvvm;
+using Calculator.Infrastructure;
 
-namespace SimpleCalc.ViewModels
+namespace Calculator.Simple.ViewModels
 {
-    class SimpleCalcUIViewModel : BindableBase
+    public class SimpleCalculatorUIViewModel : ViewModelBase
     {
-        public SimpleCalcUIViewModel()
+        public SimpleCalculatorUIViewModel()
         {
             AddCommand = new DelegateCommand(Add);
             SubtractCommand = new DelegateCommand(Subtract);
@@ -18,17 +19,9 @@ namespace SimpleCalc.ViewModels
             DivideCommand = new DelegateCommand(Divide);
         }
 
-        private void Divide()
+        private void Add()
         {
-            if (SecondNumber != 0)
-            {
-                DivideResult = FirstNumber / SecondNumber;
-            }
-        }
-
-        private void Multiply()
-        {
-            MultiplyResult = FirstNumber * SecondNumber;
+            AddResult = FirstNumber + SecondNumber;
         }
 
         private void Subtract()
@@ -36,18 +29,16 @@ namespace SimpleCalc.ViewModels
             SubtractResult = FirstNumber - SecondNumber;
         }
 
-        private void Add()
+        private void Multiply()
         {
-            AddResult = FirstNumber + SecondNumber;
+            MultiplyResult = FirstNumber * SecondNumber;
         }
 
-        private int _firstNumber;
-
-        public int FirstNumber
+        private void Divide()
         {
-            get { return _firstNumber; }
-            set { SetProperty(ref _firstNumber, value);
-                Recalculate();
+            if (SecondNumber != 0)
+            {
+                DivideResult = FirstNumber / SecondNumber;
             }
         }
 
@@ -59,12 +50,36 @@ namespace SimpleCalc.ViewModels
             Divide();
         }
 
+        private int _firstNumber;
+
+        public int FirstNumber
+        {
+            get { return _firstNumber; }
+            set
+            {
+                if (value == 0)
+                    AddError("Please enter a non-zero value.");
+                else
+                    RemoveError();
+
+                SetProperty(ref _firstNumber, value);
+                Recalculate();
+            }
+        }
+
         private int _secondNumber;
 
         public int SecondNumber
         {
             get { return _secondNumber; }
-            set { SetProperty(ref _secondNumber, value);
+            set
+            {
+                if (value == 0)
+                    AddError("Please enter a non-zero value.");
+                else
+                    RemoveError();
+
+                SetProperty(ref _secondNumber, value);
                 Recalculate();
             }
         }

@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Calculator.Views
+namespace Calculator.Simple.Views
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for SimpleCalculatorUI.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class SimpleCalculatorUI : UserControl
     {
-        public MainWindow()
+        public SimpleCalculatorUI()
         {
             InitializeComponent();
         }

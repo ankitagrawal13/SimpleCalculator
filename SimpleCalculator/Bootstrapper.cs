@@ -7,10 +7,13 @@ using System.Threading.Tasks;
 using System.Windows;
 using Microsoft.Practices.Unity;
 using Prism.Modularity;
+using Calculator.Simple;
+using Calculator.Views;
+using Calculator.Scientific;
 
-namespace SimpleCalculator
+namespace Calculator
 {
-    class Bootstrapper : UnityBootstrapper
+    public class Bootstrapper : UnityBootstrapper
     {
         protected override DependencyObject CreateShell()
         {
@@ -19,12 +22,14 @@ namespace SimpleCalculator
 
         protected override void InitializeShell()
         {
+            Application.Current.MainWindow = Shell as Window;
             Application.Current.MainWindow.Show();
         }
 
         protected override void ConfigureModuleCatalog()
         {
-            ((ModuleCatalog)ModuleCatalog).AddModule(typeof(SimpleCalc.SimpleCalcModule));
+            ((ModuleCatalog)ModuleCatalog).AddModule(typeof(SimpleCalculatorModule));
+            ((ModuleCatalog)ModuleCatalog).AddModule(typeof(ScientificCalculatorModule));
         }
     }
 }

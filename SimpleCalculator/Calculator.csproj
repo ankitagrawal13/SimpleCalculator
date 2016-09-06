@@ -7,8 +7,8 @@
     <ProjectGuid>{C2E65DCC-CCD9-424A-B271-D78DFA5A4812}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SimpleCalculator</RootNamespace>
-    <AssemblyName>SimpleCalculator</AssemblyName>
+    <RootNamespace>Calculator</RootNamespace>
+    <AssemblyName>Calculator</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -102,6 +102,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MainWindowViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -130,9 +131,17 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Simple\SimpleCalc.csproj">
+    <ProjectReference Include="..\Calculator.Infrastructure\Calculator.Infrastructure.csproj">
+      <Project>{e09be5b9-2855-4aab-b7f3-035f803a2a0f}</Project>
+      <Name>Calculator.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ScientificCalculator\ScientificCalculator.csproj">
+      <Project>{0cae2859-fdce-4529-a0a8-f8fce12b2985}</Project>
+      <Name>ScientificCalculator</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Simple\SimpleCalculator.csproj">
       <Project>{7ca88879-0fb3-4a47-86aa-5f3000ecbae4}</Project>
-      <Name>SimpleCalc</Name>
+      <Name>SimpleCalculator</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
